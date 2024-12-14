@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -64,7 +65,13 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !isDead && isGround)
         {
-            rb.velocity = Vector2.up * jumpForce;
+            Jump();
+        }
+
+        // Restart for test purpose
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         WallSlide();
@@ -114,6 +121,17 @@ public class PlayerController : MonoBehaviour
         healthAmount = 100f;
     }*/
 
+    void Jump() 
+    {
+        rb.velocity = Vector2.up * jumpForce;
+        targetAnimator.SetBool("isJumping", true);
+    }
+    
+    void SetIsJumpingFalse()
+    {
+        targetAnimator.SetBool("isJumping", false);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Barrier"))
@@ -140,14 +158,14 @@ public class PlayerController : MonoBehaviour
             Respawn();
         }
 
-        if (collision.gameObject.CompareTag("Target"))
-        {
-            targetAnimator.SetBool("atTarget", true);
-        }
-        else
-        {
-            targetAnimator.SetBool("atTarget", false);
-        }
+        //if (collision.gameObject.CompareTag("Target"))
+        //{
+        //    targetAnimator.SetBool("atTarget", true);
+        //}
+        //else
+        //{
+        //    targetAnimator.SetBool("atTarget", false);
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

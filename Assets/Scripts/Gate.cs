@@ -16,11 +16,17 @@ public class Gate : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         popUp.SetActive(true);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
         if (Input.GetKeyDown(KeyCode.E))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Debug.Log("Loading next scene");
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         popUp.SetActive(false);

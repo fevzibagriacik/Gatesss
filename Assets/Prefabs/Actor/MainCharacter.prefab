@@ -219,7 +219,7 @@ MonoBehaviour:
   wallCheck: {fileID: 6123185797253449506}
   wallJumpingPower: {x: 8, y: 16}
   spawnPoint: {x: 0, y: 0, z: 0}
-  targetAnimator: {fileID: 0}
+  targetAnimator: {fileID: 4579197589988417656}
   healths:
   - {fileID: 0}
   - {fileID: 0}
