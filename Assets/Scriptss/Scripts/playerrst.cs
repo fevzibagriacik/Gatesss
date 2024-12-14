@@ -10,7 +10,7 @@ public class playerrst : MonoBehaviour
     private bool catched = false;
     public float holdLift;
     public float holdLength;
-    public Camera camera;
+    //public Camera camera;
     public float catchingRadius=0.5f;
     public float catchLength;
     RaycastHit hitt;
@@ -27,7 +27,7 @@ public class playerrst : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        catching= new Vector3(catchLength, 0f, 0f);
+        catching= new Vector3(0f, 0f, catchLength);
         CubeControl();
         if (catched)
         {
@@ -53,7 +53,7 @@ public class playerrst : MonoBehaviour
             
             
             ray = new Ray(gameObject.transform.position, gameObject.transform.position + catching);
-            if (Physics.BoxCast(gameObject.transform.position,new Vector3(0.3f,0.3f,0.3f),new Vector3(1,0,0), out hit))
+            if (Physics.BoxCast(gameObject.transform.position,new Vector3(0.3f,0.3f,0.3f),new Vector3(0, 0, 1), out hit))
             {
                 if (hit.collider.tag=="cube")
                 {
@@ -71,11 +71,11 @@ public class playerrst : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 ray = new Ray(gameObject.transform.position, gameObject.transform.position + catching);
-                if (Physics.BoxCast(gameObject.transform.position, new Vector3(0.3f, 0.3f, 0.3f), new Vector3(1, 0, 0), out hit))
+                if (Physics.BoxCast(gameObject.transform.position, new Vector3(0.3f, 0.3f, 0.3f), new Vector3(0, 0, 1), out hit))
                 {
                     catched = true;
                     if (hit.collider.GetComponentInParent<Transform>().gameObject.CompareTag("parentCube")){
-                        hit.collider.GetComponentInParent<Transform>().position = transform.position + new Vector3(holdLength, holdLift, 0f);
+                        hit.collider.GetComponentInParent<Transform>().position = transform.position + new Vector3(0f, holdLift,holdLength );
                         hitt = hit;   
                     }
                 }
@@ -96,7 +96,7 @@ public class playerrst : MonoBehaviour
                 if (hitt.collider.GetComponentInParent<Transform>().gameObject.CompareTag("parentCube"))
                 {
                     Debug.Log("parentdetect");
-                    hitt.collider.GetComponentInParent<Transform>().position = transform.position + new Vector3(holdLength, holdLift, 0f);
+                    hitt.collider.GetComponentInParent<Transform>().position = transform.position + new Vector3(0f, holdLift, holdLength);
                     
 
                 }
