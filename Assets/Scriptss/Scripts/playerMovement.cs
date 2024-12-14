@@ -41,7 +41,7 @@ public class playerMovement : MonoBehaviour
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
     private bool exitingSlope;
-
+    [SerializeField] Transform camera;
 
 
    
@@ -128,8 +128,24 @@ public class playerMovement : MonoBehaviour
     }
     void OnMove(InputValue value)
     {
+        /*Vector2 inputVector = value.Get<Vector2>();
+        
+        moveDirection = new Vector3(inputVector.y+camera.rotation.x  ,  0, -inputVector.x+camera.rotation.y);*/
         Vector2 inputVector = value.Get<Vector2>();
-        moveDirection = new Vector3(inputVector.y,  0, -inputVector.x);
+
+        // Kameranýn ileri (forward) ve saða (right) vektörlerini alarak hareket yönünü hesapla
+        Vector3 forward =camera.transform.forward;
+        Vector3 right = -camera.transform.right;
+
+        // Y ekseni (yukarý-aþaðý) hareketinde kamerayý iptal et
+        forward.y = 0;
+        right.y = 0;
+
+        // Hareket yönünü normalize edip input deðerleri ile çarp
+        forward.Normalize();
+        right.Normalize();
+
+        moveDirection = forward * inputVector.x + right * inputVector.y;
     }
 
     private void StateHandler()
@@ -162,7 +178,7 @@ public class playerMovement : MonoBehaviour
             //Debug.Log("on Air");
         }
     }
-
+    /*
     private void MovePlayer()
     {
         // calculate movement direction
@@ -186,6 +202,26 @@ public class playerMovement : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
         // turn gravity off while on slope
+        rb.useGravity = !OnSlope();
+    }*/
+    private void MovePlayer()
+    {
+        if (OnSlope() && !exitingSlope)
+        {
+            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
+
+            if (rb.velocity.y > 0)
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+        }
+        else if (grounded)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
+        else if (!grounded)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
+
         rb.useGravity = !OnSlope();
     }
 
