@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Barrier
   - cube
-  - cubeParent
   - parentCube
+  - Player3D
   layers:
   - Default
   - TransparentFX
