@@ -8,10 +8,8 @@ TagManager:
   - cube
   - parentCube
   - Player3D
-  - Death
-  - Gate1
-  - Target
-  - TargetSpawnPoint
+  - Ground
+  - Egg
   layers:
   - Default
   - TransparentFX
