@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Barrier
+  - cube
+  - parentCube
+  - Player3D
   layers:
   - Default
   - TransparentFX
