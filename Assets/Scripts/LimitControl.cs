@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EggCollector : MonoBehaviour
+public class LimitControl : MonoBehaviour
 {
-    [SerializeField] GameObject pl1;
-    [SerializeField] GameObject egg;
+    [SerializeField] GameObject eggPre;
     void Start()
     {
-        pl1.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -16,12 +15,13 @@ public class EggCollector : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Egg"))
         {
-            pl1.SetActive(true);
             Destroy(collision.gameObject);
+            Instantiate(eggPre);
         }
     }
 }
