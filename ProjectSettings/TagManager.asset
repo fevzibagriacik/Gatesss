@@ -8,6 +8,8 @@ TagManager:
   - cube
   - parentCube
   - Player3D
+  - Ground
+  - Egg
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - GroundLayer
+  - WallLayer
   - 
   - 
   - 
