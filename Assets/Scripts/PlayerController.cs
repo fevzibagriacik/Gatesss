@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed = 5f;
-    [SerializeField] float healthAmount = 100f;
-    [SerializeField] float takeDamage;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float healthAmount = 100f;
+    [SerializeField] private float takeDamage;
 
-    [SerializeField] bool isDead = false;
+    [SerializeField] private bool isDead = false;
+    [SerializeField] private bool isWallTouch = false;
 
-    [SerializeField] Image healthBar;
+    [SerializeField] private Image healthBar;
     void Start()
     {
         
