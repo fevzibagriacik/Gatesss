@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isWallSliding;
     [SerializeField] private bool isMoving = false;
     [SerializeField] private bool isWallJumping = false;
+    [SerializeField] private bool atTarget = false;
 
     //[SerializeField] private Image healthBar;
 
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Vector2 wallJumpingPower = new Vector2(8f, 16f);
     [SerializeField] private Vector3 spawnPoint;
+
+    public Animator targetAnimator;
 
     public List<Image> healths;
 
@@ -129,6 +132,29 @@ public class PlayerController : MonoBehaviour
                 isDead = true;
                 Respawn();
             }
+        }
+
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            isDead = true;
+            Respawn();
+        }
+
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            targetAnimator.SetBool("atTarget", true);
+        }
+        else
+        {
+            targetAnimator.SetBool("atTarget", false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Gate1"))
+        {
+            transform.position = new Vector3(-7.53999996f, 5.5999999f, 0);
         }
     }
 
