@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dbf50f0333b5e1445bf1b115e9aba535
+guid: 989211a44de637b429bafdbdd1074d2a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,11 +69,11 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
-    compressionQuality: 100
+    compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG-Sheet_0
+      name: MainCharacterIdle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4000
-        width: 2000
-        height: 1000
+        x: 6
+        y: 2
+        width: 20
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f195162d5bc397c4bbceebb991e1d59c
-      internalID: 1132888648
+      spriteID: 9d87a8bc5a6ca974d9db800ec1ce9474
+      internalID: -211534715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BG-Sheet_1
+      name: MainCharacterIdle_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3000
-        width: 2000
-        height: 1000
+        x: 38
+        y: 2
+        width: 20
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3577a717870983e47a2eec1867ff850f
-      internalID: 508405538
+      spriteID: fda9a507f2a2eb9499e1a045a7f2df6a
+      internalID: 2133361579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BG-Sheet_2
+      name: MainCharacterIdle_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2000
-        width: 2000
-        height: 1000
+        x: 70
+        y: 2
+        width: 20
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83a718bd2934bb746b0450fa8a9d5afa
-      internalID: -1686202036
+      spriteID: 4ebeadda1a2f5ce4eb5c2c3a9f545ff9
+      internalID: -315828422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BG-Sheet_3
+      name: MainCharacterIdle_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1000
-        width: 2000
-        height: 1000
+        x: 101
+        y: 2
+        width: 22
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,29 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 180daf586ae36d346a196f314dd6a396
-      internalID: -1377292383
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BG-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2000
-        height: 1000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aefb9dcbd67f74d40872b6c654843c69
-      internalID: -1530800222
+      spriteID: 381b2eeba0c65864db8e2427d07f30c1
+      internalID: 1895008233
       vertices: []
       indices: 
       edges: []
@@ -238,11 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BG-Sheet_0: 1132888648
-      BG-Sheet_1: 508405538
-      BG-Sheet_2: -1686202036
-      BG-Sheet_3: -1377292383
-      BG-Sheet_4: -1530800222
+      MainCharacterIdle_0: -211534715
+      MainCharacterIdle_1: 2133361579
+      MainCharacterIdle_2: -315828422
+      MainCharacterIdle_3: 1895008233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
