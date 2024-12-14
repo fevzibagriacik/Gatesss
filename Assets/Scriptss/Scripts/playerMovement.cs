@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class playerMovement : MonoBehaviour
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
+    public float crouch_jumpTime;
     
     public float sprintSpeed;
 
@@ -42,14 +44,22 @@ public class playerMovement : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
     [SerializeField] Transform camera;
+    private bool CrouchToJumpBool;
+    float timer = 0f;
+    public float dashTime;
+    public float dashLength;
+    public float DashPower;
 
 
-   
+
+
     Vector3 moveDirection= Vector2.zero;
 
     Rigidbody rb;
 
     public MovementState state;
+    private bool dashing=false;
+
     public enum MovementState
     {
         walking,
@@ -84,6 +94,7 @@ public class playerMovement : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
+        CrouchToJump();
 
         // handle drag
         if (grounded) { 
@@ -91,6 +102,13 @@ public class playerMovement : MonoBehaviour
         rb.drag = groundDrag; }
         else
             rb.drag = 0;
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            dashing = true;
+
+        }
+        Dash();
     }
 
     private void FixedUpdate()
@@ -108,7 +126,7 @@ public class playerMovement : MonoBehaviour
         {
             readyToJump = false;
 
-            Jump();
+            CrouchToJumpBool = true; 
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
@@ -134,18 +152,16 @@ public class playerMovement : MonoBehaviour
         Vector2 inputVector = value.Get<Vector2>();
 
         // Kameranýn ileri (forward) ve saða (right) vektörlerini alarak hareket yönünü hesapla
-        Vector3 forward =camera.transform.forward;
-        Vector3 right = -camera.transform.right;
+        float x_axis =camera.GetComponent<CinemachineFreeLook>().m_XAxis.Value;
+        float y_Axis = camera.GetComponent<CinemachineFreeLook>().m_YAxis.Value;
 
         // Y ekseni (yukarý-aþaðý) hareketinde kamerayý iptal et
-        forward.y = 0;
-        right.y = 0;
+        
 
         // Hareket yönünü normalize edip input deðerleri ile çarp
-        forward.Normalize();
-        right.Normalize();
+        
 
-        moveDirection = forward * inputVector.x + right * inputVector.y;
+        moveDirection =new Vector3(x_axis+inputVector.x,0f,x_axis+inputVector.y);
     }
 
     private void StateHandler()
@@ -204,6 +220,7 @@ public class playerMovement : MonoBehaviour
         // turn gravity off while on slope
         rb.useGravity = !OnSlope();
     }*/
+    /*
     private void MovePlayer()
     {
         if (OnSlope() && !exitingSlope)
@@ -220,6 +237,29 @@ public class playerMovement : MonoBehaviour
         else if (!grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
+
+        rb.useGravity = !OnSlope();
+    }*/
+    private void MovePlayer()
+    {
+        if (moveDirection != Vector3.zero) // Sadece hareket giriþi varsa kuvvet uygula
+        {
+            if (OnSlope() && !exitingSlope)
+            {
+                rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
+
+                if (rb.velocity.y > 0)
+                    rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+            }
+            else if (grounded)
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            }
+            else if (!grounded)
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            }
         }
 
         rb.useGravity = !OnSlope();
@@ -247,9 +287,36 @@ public class playerMovement : MonoBehaviour
             }
         }
     }
+    private void CrouchToJump()
+    {
+        
+        if (CrouchToJumpBool)
+        {
+            Debug.Log("CrouchtoJumpBool");
+            state = MovementState.crouching;
+            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+            if (timer > crouch_jumpTime)
+            {
+                CrouchToJumpBool = false;
+                timer = 0f;
+                transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+                Jump();
+                
+            }
+            else
+            {
+                timer += Time.deltaTime;
+            }
+            
+        }
+    }
 
     private void Jump()
     {
+
+        Debug.Log("jump");
+        state = MovementState.air;
         exitingSlope = true;
 
         // reset y velocity
@@ -273,6 +340,26 @@ public class playerMovement : MonoBehaviour
         }
 
         return false;
+    }
+    private void Dash()
+    {
+        if (dashing == true)
+        {
+            if (timer < dashTime)
+            {
+                rb.useGravity = false;
+                timer += Time.deltaTime;
+                transform.position = new Vector3(transform.position.x, 0f,transform.position.z);
+                
+                rb.AddForce(transform.forward*DashPower,ForceMode.Force);
+            }
+            else
+            {
+                timer = 0;
+                dashing = false;
+                rb.useGravity = true;
+            }
+        }
     }
 
     private Vector3 GetSlopeMoveDirection()

@@ -9,7 +9,7 @@ public class PressurePlate3D : MonoBehaviour
    
     public float pressurePlateSpeed=0.01f;
     bool notOnFloor=true;
-    bool canGoBack=false;
+    //bool canGoBack=false;
     bool goneBack=true;
     bool somethingAtTop = false;
     [SerializeField] GateController Gate_controller;
