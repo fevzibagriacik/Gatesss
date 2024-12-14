@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float healthAmount = 100f;
-    [SerializeField] private float takeDamage;
+    //[SerializeField] private float healthAmount = 100f;
+    //[SerializeField] private float takeDamage;
     [SerializeField] private float jumpForce = 16f;
     [SerializeField] private float wallSlidingSpeed = 2f;
     [SerializeField] private float wallJumpingTime = 0.2f;
     [SerializeField] private float wallJumpingCounter;
     [SerializeField] private float wallJumpingDuration = 0.4f;
+
+    [SerializeField] private int currentHealthIndex = 4;
 
     [SerializeField] private bool isDead = false;
     [SerializeField] private bool isGround;
@@ -20,7 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isMoving = false;
     [SerializeField] private bool isWallJumping = false;
 
-    [SerializeField] private Image healthBar;
+    //[SerializeField] private Image healthBar;
 
     [SerializeField] private Rigidbody2D rb;
 
@@ -31,6 +34,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform wallCheck;
 
     [SerializeField] private Vector2 wallJumpingPower = new Vector2(8f, 16f);
+    [SerializeField] private Vector3 spawnPoint;
+
+    public List<Image> healths;
+
+    public Sprite fullHealth;
+    public Sprite emptyHealth;
+
+    private void Start()
+    {
+        spawnPoint = transform.position;
+    }
 
     void Update()
     {
@@ -63,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void HorizontalMove()
+    /*void HorizontalMove()
     {
         isMoving = false;
         Vector2 dir = Vector2.zero;
@@ -81,41 +95,58 @@ public class PlayerController : MonoBehaviour
         dir.Normalize();
 
         GetComponent<Rigidbody2D>().velocity = speed * dir;
-    }
+    }*/
 
-    void TakeDamage(float damage)
+    /*void TakeDamage(float damage)
     {
         healthAmount -= damage;
         healthBar.fillAmount = healthAmount / 100f;
-    }
 
-    void fillHealth()
+
+    }*/
+
+    /*void fillHealth()
     {
         healthBar.fillAmount = 100f;
         healthAmount = 100f;
-    }
+    }*/
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Barrier"))
         {
-            TakeDamage(15);
+            /*TakeDamage();
 
             if(healthBar.fillAmount <= 0f)
             {
                 isDead = true;
+            }*/
+            healths[currentHealthIndex].sprite = emptyHealth;
+            currentHealthIndex--;
+
+            if(currentHealthIndex == -1)
+            {
+                isDead = true;
+                Respawn();
             }
         }
     }
 
     void Respawn()
     {
+        currentHealthIndex = 4;
+
         isDead = false;
 
-        transform.position = new Vector3(-0.75f, 1.12f, 0f);
+        transform.position = spawnPoint;
 
-        healthAmount = 100f;
-        healthBar.fillAmount = 100f;
+        for(int i = 0; i < healths.Count; i++)
+        {
+            healths[i].sprite = fullHealth;
+        }
+
+        /*healthAmount = 100f;
+        healthBar.fillAmount = 100f;*/
     }
 
     private bool IsWalled()
