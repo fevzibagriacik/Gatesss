@@ -95,7 +95,9 @@ public class playerrst : MonoBehaviour
                 catched = true;
                 if (hitt.collider.GetComponentInParent<Transform>().gameObject.CompareTag("parentCube"))
                 {
+                    Debug.Log("parentdetect");
                     hitt.collider.GetComponentInParent<Transform>().position = transform.position + new Vector3(holdLength, holdLift, 0f);
+                    
 
                 }
             }

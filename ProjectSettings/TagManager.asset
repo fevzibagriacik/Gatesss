@@ -5,7 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Barrier
-  - Ground
+  - cube
+  - cubeParent
+  - parentCube
   layers:
   - Default
   - TransparentFX
