@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gate : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class Gate : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         popUp.SetActive(true);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

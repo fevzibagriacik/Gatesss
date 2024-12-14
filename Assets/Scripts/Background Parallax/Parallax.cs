@@ -5,7 +5,7 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
     private float length, startPos;
-    public Camera cam;
+    public GameObject cam;
     public float parallaxEffect;
 
     // Start is called before the first frame update
