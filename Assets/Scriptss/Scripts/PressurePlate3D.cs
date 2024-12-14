@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,13 @@ using UnityEngine;
 public class PressurePlate3D : MonoBehaviour
 {
     public Vector3 originalPos;
-    
+   
     public float pressurePlateSpeed=0.01f;
     bool notOnFloor=true;
     bool canGoBack=false;
     bool goneBack=true;
     bool somethingAtTop = false;
+    [SerializeField] GateController Gate_controller;
 
     // Update is called once per frame
     private void Start()
@@ -29,6 +31,7 @@ public class PressurePlate3D : MonoBehaviour
             GetComponent<MeshRenderer>().material.color = Color.green;
         }
     }
+    
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "Player3D"&&notOnFloor)
@@ -50,6 +53,8 @@ public class PressurePlate3D : MonoBehaviour
         if(Mathf.Abs(gameObject.transform.position.y-originalPos.y)>= 0.1)
         {
             notOnFloor = false;
+            Gate_controller.GateOpen = true;
+
         }
         if (Mathf.Approximately(originalPos.y- transform.position.y,0f))
         {
@@ -69,12 +74,14 @@ public class PressurePlate3D : MonoBehaviour
             somethingAtTop = false;
             goneBack=false;
             GetComponent<MeshRenderer>().material.color = Color.red;
+            Gate_controller.GateOpen = false;
         }
         if (collision.gameObject.tag == "parentCube"&&goneBack==false)
         {
             goneBack=false;
             somethingAtTop = false;
             GetComponent<MeshRenderer>().material.color = Color.red;
+            Gate_controller.GateOpen = false;
         }
     }
 
