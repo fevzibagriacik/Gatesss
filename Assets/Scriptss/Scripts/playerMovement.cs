@@ -66,20 +66,29 @@ public class playerMovement : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+        //Debug.Log("scriptIsWorking");
+
+        state = MovementState.crouching;
+        moveSpeed = crouchSpeed;
     }
 
     private void Update()
     {
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit ,playerHeight * 0.5f + 0.2f, whatIsGround))
+        {
+            grounded=true;
+        }
+        //Debug.Log(hit + "");
         MyInput();
         SpeedControl();
         StateHandler();
 
         // handle drag
-        if (grounded)
-            rb.drag = groundDrag;
+        if (grounded) { 
+            //Debug.Log("GroundDetected");
+        rb.drag = groundDrag; }
         else
             rb.drag = 0;
     }
@@ -150,13 +159,14 @@ public class playerMovement : MonoBehaviour
         else
         {
             state = MovementState.air;
+            //Debug.Log("on Air");
         }
     }
 
     private void MovePlayer()
     {
         // calculate movement direction
-       
+        //Debug.Log("MovePlayer()");
 
         // on slope
         if (OnSlope() && !exitingSlope)
