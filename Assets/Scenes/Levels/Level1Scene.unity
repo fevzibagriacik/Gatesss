@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 2101958769}
   - component: {fileID: 2101958768}
   - component: {fileID: 2101958767}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5513,7 +5513,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -24, y: -6, z: 0}
-  m_Size: {x: 84, y: 12, z: 1}
+  m_Size: {x: 84, y: 13, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
