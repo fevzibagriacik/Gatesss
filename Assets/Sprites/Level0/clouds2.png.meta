@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3e618e92c9f17e41a37a1d379ceeeba
-      internalID: 635718449
+      spriteID: ad42b9a6e22a89242a2a98444f2c4a96
+      internalID: -2027002334
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f76b8a0d2333de44a2015eda12d94f4
-      internalID: 1128247331
+      spriteID: 39657fe7b47242447930056d80697273
+      internalID: -413612585
       vertices: []
       indices: 
       edges: []
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 735a1be747aaa6f4fae9e6436bc117fd
-      internalID: -2022736166
+      spriteID: d531e3b31a8c07045acb9480aa5f8d79
+      internalID: -1864129709
       vertices: []
       indices: 
       edges: []
@@ -196,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      clouds2_0: 635718449
-      clouds2_1: 1128247331
-      clouds2_2: -2022736166
+      clouds2_0: -2027002334
+      clouds2_1: -413612585
+      clouds2_2: -1864129709
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

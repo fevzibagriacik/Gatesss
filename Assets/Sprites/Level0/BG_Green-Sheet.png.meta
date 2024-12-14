@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5a96bc70902c14043aa5c61b30292aac
+guid: 0be0204c91eccb548abe21630025b9df
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: clouds3_0
+      name: BG_Green-Sheet_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 35
-        width: 57
-        height: 29
+        x: 0
+        y: 4000
+        width: 2000
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f79be022bdcf13f4393eda4c53aa43b8
-      internalID: -1674885526
+      spriteID: d2b9f9aff6099d549b68c0109b3d5d0f
+      internalID: -1341175854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clouds3_1
+      name: BG_Green-Sheet_1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 1
-        width: 59
-        height: 32
+        x: 0
+        y: 3000
+        width: 2000
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +158,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f6632bc5336c064999976111ee48146
-      internalID: -1682423911
+      spriteID: 7bb85b89b2ff7a44f8933d8395161c93
+      internalID: -716479750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_Green-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae238c53c21b294f9231a55f0ac60a8
+      internalID: -145796449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_Green-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2bc50dd0b57049458adc0004211d366
+      internalID: -1278122361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_Green-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3da1f85268e535345b8c51f414350b95
+      internalID: 1925612649
       vertices: []
       indices: 
       edges: []
@@ -175,8 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      clouds3_0: -1674885526
-      clouds3_1: -1682423911
+      BG_Green-Sheet_0: -1341175854
+      BG_Green-Sheet_1: -716479750
+      BG_Green-Sheet_2: -145796449
+      BG_Green-Sheet_3: -1278122361
+      BG_Green-Sheet_4: 1925612649
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

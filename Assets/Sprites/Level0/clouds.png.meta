@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1036c91d19c11804dba15629bf992e35
-      internalID: -1433965338
+      spriteID: 0074011adff82de41bc5aa92755b51d5
+      internalID: 967295647
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f22ecdddfde21924394d4d95239938bc
-      internalID: 480446113
+      spriteID: 6d59e4aff99fcc8408cb5563eac1f693
+      internalID: 64651463
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      clouds_0: -1433965338
-      clouds_1: 480446113
+      clouds_0: 967295647
+      clouds_1: 64651463
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
