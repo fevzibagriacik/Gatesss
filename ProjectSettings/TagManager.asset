@@ -10,6 +10,7 @@ TagManager:
   - Player3D
   - Ground
   - Egg
+  - Limit
   layers:
   - Default
   - TransparentFX
