@@ -68,11 +68,11 @@ public class PlayerController : MonoBehaviour
                 Jump();
             }
 
-            // Restart for test purpose
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
+            //// Restart for test purpose
+            //if (Input.GetKeyDown(KeyCode.R))
+            //{
+            //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //}
 
             WallSlide();
 
