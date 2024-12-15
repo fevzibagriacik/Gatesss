@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     public List<Image> healths;
 
-    int currentHealth = 1;
+    int currentHealth = 5;
 
     public Sprite fullHealth;
     public Sprite emptyHealth;
@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         spawnPoint = transform.position;
+        currentHealth = 5;
         updateHealthBar();
     }
 

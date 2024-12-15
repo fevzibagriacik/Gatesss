@@ -228,6 +228,7 @@ MonoBehaviour:
   - {fileID: 0}
   fullHealth: {fileID: -382268591, guid: 7ca44f714f71697439d13174a9c96bad, type: 3}
   emptyHealth: {fileID: 1897671416, guid: 7ca44f714f71697439d13174a9c96bad, type: 3}
+  menuManager: {fileID: 0}
 --- !u!1 &3387406409771247479
 GameObject:
   m_ObjectHideFlags: 0
