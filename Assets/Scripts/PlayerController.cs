@@ -42,48 +42,51 @@ public class PlayerController : MonoBehaviour
 
     public List<Image> healths;
 
+    int currentHealth = 1;
+
     public Sprite fullHealth;
     public Sprite emptyHealth;
+
+    public MenuManager menuManager;
 
     private void Start()
     {
         spawnPoint = transform.position;
+        updateHealthBar();
     }
 
     void Update()
     {
-        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-
-        if (!isDead)
+        if (!MenuManager.isPaused)
         {
-            //HorizontalMove();
-        }
-        else if(isDead)
-        {
-            Respawn();
-        }
+            isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isDead && isGround)
-        {
-            Jump();
+            // Check for jump
+            if (Input.GetKeyDown(KeyCode.Space) && !isDead && isGround)
+            {
+                Jump();
+            }
+
+            // Restart for test purpose
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+
+            WallSlide();
+
+            WallJump();
         }
-
-        // Restart for test purpose
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
-        WallSlide();
-
-        WallJump();
     }
 
     private void FixedUpdate()
     {
-        if (!isWallJumping && !isDead)
+        if (!MenuManager.isPaused)
         {
-            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, rb.velocity.y);
+            if (!isWallJumping && !isDead)
+            {
+                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, rb.velocity.y);
+            }
         }
     }
 
@@ -107,26 +110,12 @@ public class PlayerController : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = speed * dir;
     }*/
 
-    /*void TakeDamage(float damage)
-    {
-        healthAmount -= damage;
-        healthBar.fillAmount = healthAmount / 100f;
-
-
-    }*/
-
-    /*void fillHealth()
-    {
-        healthBar.fillAmount = 100f;
-        healthAmount = 100f;
-    }*/
-
-    void Jump() 
+    void Jump()
     {
         rb.velocity = Vector2.up * jumpForce;
         targetAnimator.SetBool("isJumping", true);
     }
-    
+
     void SetIsJumpingFalse()
     {
         targetAnimator.SetBool("isJumping", false);
@@ -145,17 +134,11 @@ public class PlayerController : MonoBehaviour
             healths[currentHealthIndex].sprite = emptyHealth;
             currentHealthIndex--;
 
-            if(currentHealthIndex == -1)
+            if (currentHealthIndex == -1)
             {
                 isDead = true;
                 Respawn();
             }
-        }
-
-        if (collision.gameObject.CompareTag("Death"))
-        {
-            isDead = true;
-            Respawn();
         }
 
         //if (collision.gameObject.CompareTag("Target"))
@@ -174,25 +157,46 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(-7.53999996f, 5.5999999f, 0);
         }
+
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            isDead = true;
+            if (currentHealth > 1)
+            {
+                Respawn();
+            }
+            else
+            {
+                GameOver();
+            }
+        }
     }
 
     void Respawn()
     {
-        currentHealthIndex = 4;
-
         isDead = false;
-
         transform.position = spawnPoint;
-
-        for(int i = 0; i < healths.Count; i++)
-        {
-            healths[i].sprite = fullHealth;
-        }
-
-        /*healthAmount = 100f;
-        healthBar.fillAmount = 100f;*/
+        currentHealth--;
+        updateHealthBar();
     }
 
+    void GameOver()
+    {
+        menuManager.ActivateDeathMenu();
+    }
+
+    void updateHealthBar()
+    {
+        for (int i = 0; i < healths.Count; i++)
+        {
+            if (i < currentHealth)
+            {
+                healths[i].sprite = fullHealth;
+                continue;
+            }
+            healths[i].sprite = emptyHealth;
+        }
+    }
     private bool IsWalled()
     {
         return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
@@ -225,7 +229,7 @@ public class PlayerController : MonoBehaviour
             wallJumpingCounter -= Time.deltaTime;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && wallJumpingCounter > 0f)
+        if (Input.GetKeyDown(KeyCode.Space) && wallJumpingCounter > 0f)
         {
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpingPower.x, wallJumpingPower.y);
