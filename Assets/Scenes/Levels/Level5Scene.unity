@@ -1989,6 +1989,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClosedGate
       objectReference: {fileID: 0}
+    - target: {fileID: 4920381359600780048, guid: 19ea76d52909a794a8b93c1262d82d9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5154383103167009839, guid: 19ea76d52909a794a8b93c1262d82d9b, type: 3}
       propertyPath: m_Sprite
       value: 
