@@ -727,8 +727,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: StartGate GameJam
-  metroPackageVersion: 
+  metroPackageName: StartGateGameJam
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -736,7 +736,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: StartGate GameJam
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: StartGate GameJam
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

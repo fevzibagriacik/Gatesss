@@ -11,6 +11,10 @@ TagManager:
   - Ground
   - Egg
   - Limit
+  - Death
+  - Gate1
+  - Target
+  - TargetSpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -50,4 +54,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3668310361
     locked: 0
